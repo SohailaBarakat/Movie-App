@@ -79,6 +79,28 @@ docker ps
 
 You should see the `oracle-xe` container listed with port `1521` exposed.
 
+### Stopping and Managing the Docker Container
+
+To stop the Oracle container:
+
+```bash
+docker stop oracle-xe
+```
+
+To restart the container:
+
+```bash
+docker start oracle-xe
+```
+
+To remove the container, use the following commands (note: this will delete your database):
+
+```bash
+docker stop oracle-xe
+docker rm oracle-xe
+```
+---
+
 #### Step 4: Connect to the Oracle Database and Create the User
 
 Use a database client (e.g., **SQL Developer**, **IntelliJ Database Tool**, etc.) or a terminal to connect to the database:
@@ -142,29 +164,6 @@ The application uses **Flyway** to manage database migrations. When the applicat
 For custom schema modifications or migrations, refer to the `resources/db/migration` folder in the project directory.
 
 ---
-
-### Stopping and Managing the Docker Container
-
-To stop the Oracle container:
-
-```bash
-docker stop oracle-xe
-```
-
-To restart the container:
-
-```bash
-docker start oracle-xe
-```
-
-To remove the container, use the following commands (note: this will delete your database):
-
-```bash
-docker stop oracle-xe
-docker rm oracle-xe
-```
----
-
 
 ## APIs Documentation
 
