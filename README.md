@@ -136,7 +136,7 @@ docker start oracle-xe
 ```yaml
 spring:
   datasource:
-    url: jdbc:oracle:thin:@localhost:1521/XEPDB1
+    url: jdbc:oracle:thin:@localhost:1521/xe
     username: movie_app
     password: 1234
     driver-class-name: oracle.jdbc.OracleDriver
