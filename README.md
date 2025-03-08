@@ -202,20 +202,23 @@ Retrieve movie details by ID.
 **Response** (200 OK):
 ```json
 {
-  "response": {
-    "imdbId": "tt1234567",
-    "title": "Movie Title",
-    "year": "2020",
-    "genre": "Action",
-    "director": "Director Name",
-    "writer": "Writer Name",
-    "actors": "Actor 1, Actor 2",
-    "plot": "Movie plot",
-    "language": "English",
-    "poster": "http://link_to_poster",
-    "type": "movie"
-  },
-  "status": true
+    "response": {
+        "imdbID": "tt10005330",
+        "Title": "The 'Magic-Cat' and the 'Tough-Spider'",
+        "Year": "1989",
+        "Genre": "Action, Thriller",
+        "Director": "Tao Dong, Shuhuang Zhong",
+        "Writer": "Zuxun Ye, Lequn Zhang",
+        "Actors": "Jan-Ching Do, Xiaoyan Li, Xinghuo Zhong",
+        "Plot": "Set in the early republican period of China, a congressman was killed and a diamond necklace was stolen. Two investigator are arranged to find the murderer and necklace.",
+        "Language": "Mandarin",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMDRjYzcwODMtMTFjOC00YTA0LTg3ZGMtMzZlNGQzMWZkMjE4XkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg",
+        "Type": "movie",
+        "averageRating": 3.0,
+        "Response": null
+    },
+    "status": true,
+    "currentDate": "2025-03-08T20:57:53.165Z"
 }
 ```
 
