@@ -3,7 +3,7 @@ spring:
     name: MovieApp
 
   datasource:
-    url: jdbc:oracle:thin:@localhost:1522:xe
+    url: jdbc:oracle:thin:@localhost:1521:xe
     username: movie_app
     password: 1234
     driver-class-name: oracle.jdbc.OracleDriver
