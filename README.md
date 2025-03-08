@@ -43,7 +43,7 @@ The **Movie Management System** is a Spring Boot-based application that allows u
 
 1. **Java 17** must be installed.
 2. **Docker** must be installed and running.
-3. Install a database client (e.g., **SQL Developer**, **IntelliJ Database Tool**, etc.) if you want to manage the Oracle database manually.
+3. Install a database client (e.g., **DBeaver**, **IntelliJ Database Tool**, etc.) if you want to manage the Oracle database manually.
 
 ---
 
