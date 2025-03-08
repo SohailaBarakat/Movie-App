@@ -6,14 +6,14 @@ The **Movie Management System** is a Spring Boot-based application that allows u
 
 - [Features](#features)
 - [Technologies Used](#technologies-used)
+- [Setup and Installation](#setup-and-installation)
+- [Configuration](#configuration)
+- [Database Schema and Tables](#database-schema-and-tables)
 - [APIs Documentation](#apis-documentation)
   - [Authentication APIs](#authentication-apis)
   - [OMDB Movie APIs](#omdb-movie-apis)
   - [Movie APIs](#movie-apis)
   - [Rating APIs](#rating-apis)
-- [Setup and Installation](#setup-and-installation)
-- [Configuration](#configuration)
-- [Database Schema and Tables](#database-schema-and-tables)
 
 ## Features
 
