@@ -48,6 +48,7 @@ public class MovieMapper {
                 .actors(movie.getActors())
                 .poster(movie.getPoster())
                 .type(movie.getType())
+                .averageRating(movie.getAverageRating())
                 .build();
     }
 

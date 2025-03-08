@@ -41,6 +41,8 @@ public class MovieDto {
     @JsonProperty("Type")
     private String type;
 
+    private Double averageRating;
+
     @JsonProperty("Response")
     private String response;
 }
