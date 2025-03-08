@@ -302,20 +302,6 @@ You can configure the following properties in the `application.yml` file:
       password: your_password
       driver-class-name: oracle.jdbc.OracleDriver
   ```
-- **OMDB API**:
-  ```yaml
-  omdb:
-    api:
-      url: https://www.omdbapi.com
-      key: your_api_key
-  ```
-- **JWT**:
-  ```yaml
-  movie:
-    jwt:
-      secret: your_secret_key
-      expirationMs: 86400000
-  ```
 
 ---
 
