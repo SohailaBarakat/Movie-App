@@ -7,10 +7,10 @@ The **Movie Management System** is a Spring Boot-based application that allows u
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [APIs Documentation](#apis-documentation)
-  - [Authentication APIs](#authentication-apis)
-  - [OMDB Movie APIs](#omdb-movie-apis)
-  - [Movie APIs](#movie-apis)
-  - [Rating APIs](#rating-apis)
+    - [Authentication APIs](#authentication-apis)
+    - [OMDB Movie APIs](#omdb-movie-apis)
+    - [Movie APIs](#movie-apis)
+    - [Rating APIs](#rating-apis)
 - [Setup and Installation](#setup-and-installation)
 - [Configuration](#configuration)
 - [Database Schema and Tables](#database-schema-and-tables)
@@ -30,7 +30,7 @@ The **Movie Management System** is a Spring Boot-based application that allows u
 - Spring Boot 3.4.3
 - Spring Security with JWT
 - Spring Data JPA with Hibernate
-- PostgreSQL (configurable datasource with Oracle in example)
+- Oracle Database
 - Flyway for database migrations
 - OpenFeign for API integration
 - Lombok for reducing boilerplate code
@@ -89,7 +89,8 @@ Register a new user.
   "response": {
     "message": "User registered successfully!"
   },
-  "status": true
+  "status": true,
+  "currentDate": "2023-10-10T10:00:00.000Z"
 }
 ```
 
@@ -121,7 +122,8 @@ Search movies in the OMDB API. **Admin role required**.
     "totalResults": "100",
     "Response": "True"
   },
-  "status": true
+  "status": true,
+  "currentDate": "2023-10-10T10:00:00.000Z"
 }
 ```
 
@@ -140,7 +142,8 @@ Add a movie to the database. **Admin role required**.
 ```json
 {
   "response": "Movie with IMDb ID tt1234567 has been added successfully.",
-  "status": true
+  "status": true,
+  "currentDate": "2023-10-10T10:00:00.000Z"
 }
 ```
 
@@ -157,7 +160,8 @@ Remove a movie from the database. **Admin role required**.
 ```json
 {
   "response": "Movie with ID 1 has been removed successfully.",
-  "status": true
+  "status": true,
+  "currentDate": "2023-10-10T10:00:00.000Z"
 }
 ```
 
@@ -189,7 +193,8 @@ Retrieve all movies with pagination.
       }
     ]
   },
-  "status": true
+  "status": true,
+  "currentDate": "2023-10-10T10:00:00.000Z"
 }
 ```
 
@@ -202,51 +207,15 @@ Retrieve movie details by ID.
 **Response** (200 OK):
 ```json
 {
-    "response": {
-        "imdbID": "tt10005330",
-        "Title": "The 'Magic-Cat' and the 'Tough-Spider'",
-        "Year": "1989",
-        "Genre": "Action, Thriller",
-        "Director": "Tao Dong, Shuhuang Zhong",
-        "Writer": "Zuxun Ye, Lequn Zhang",
-        "Actors": "Jan-Ching Do, Xiaoyan Li, Xinghuo Zhong",
-        "Plot": "Set in the early republican period of China, a congressman was killed and a diamond necklace was stolen. Two investigator are arranged to find the murderer and necklace.",
-        "Language": "Mandarin",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMDRjYzcwODMtMTFjOC00YTA0LTg3ZGMtMzZlNGQzMWZkMjE4XkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg",
-        "Type": "movie",
-        "averageRating": 3.0,
-        "Response": null
-    },
-    "status": true,
-    "currentDate": "2025-03-08T20:57:53.165Z"
-}
-```
-
----
-
-#### GET `/api/movie/search`
-
-Search movies in the local database.
-
-**Query Parameters**:
-- `title` (optional): Search by title.
-- `year` (optional): Filter by release year.
-- `director` (optional): Filter by director.
-
-**Response** (200 OK):
-```json
-{
-  "response": [
-    {
-      "id": 1,
-      "imdbID": "tt1234567",
-      "title": "Movie Title",
-      "year": "2020",
-      "type": "movie",
-      "poster": "http://link_to_poster"
-    }
-  ],
-  "status": true
+  "response": {
+    "imdbID": "tt10005330",
+    "Title": "The 'Magic-Cat' and the 'Tough-Spider'",
+    "Year": "2020",
+    "Type": "movie",
+    "Poster": "http://link_to_poster"
+  },
+  "status": true,
+  "currentDate": "2023-10-10T10:00:00.000Z"
 }
 ```
 
@@ -256,17 +225,46 @@ Search movies in the local database.
 
 #### POST `/api/rating/add`
 
-Add a rating to a movie.
+Add a rating for a movie by a user.
 
-**Query Parameters**:
-- `movieId` (required): ID of the movie to rate.
-- `rating` (required): Rating between 1 and 5.
+**Request Body** (JSON):
+```json
+{
+  "movieId": 1,
+  "rating": 5
+}
+```
 
 **Response** (200 OK):
 ```json
 {
-  "response": "Rating added successfully for movie ID: 1",
-  "status": true
+  "response": "Rating for movie with ID 1 has been added successfully.",
+  "status": true,
+  "currentDate": "2023-10-10T10:00:00.000Z"
+}
+```
+
+---
+
+#### GET `/api/rating/movie/{movieId}`
+
+Retrieve all ratings for a specific movie.
+
+**Response** (200 OK):
+```json
+{
+  "response": [
+    {
+      "userId": 1,
+      "rating": 4
+    },
+    {
+      "userId": 2,
+      "rating": 5
+    }
+  ],
+  "status": true,
+  "currentDate": "2023-10-10T10:00:00.000Z"
 }
 ```
 
@@ -274,45 +272,24 @@ Add a rating to a movie.
 
 ## Setup and Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-repository/movie-management-system.git
-   cd movie-management-system
-   ```
-2. Configure the database connection in `application.yml`.
-3. Run the following commands to set up the project:
-   ```bash
-   mvn clean install
-   mvn spring-boot:run
-   ```
-4. Access Swagger UI at `http://localhost:8080/swagger-ui.html`.
-
----
+1. Clone the repository.
+2. Configure the database and API keys in the application properties.
+3. Run migrations using Flyway.
+4. Start the Spring Boot application.
 
 ## Configuration
 
-You can configure the following properties in the `application.yml` file:
-
-- **Database**:
-  ```yaml
-  spring:
-    datasource:
-      url: jdbc:oracle:thin:@localhost:1521:xe
-      username: movie_app
-      password: your_password
-      driver-class-name: oracle.jdbc.OracleDriver
-  ```
-
----
+Update `application.properties` with the following parameters:
+- `spring.datasource.url`
+- `spring.datasource.username`
+- `spring.datasource.password`
+- `jwt.secret`
+- `omdb.api.key`
 
 ## Database Schema and Tables
 
-This project uses Flyway for database migrations. The schema includes:
-- **`users`**: Stores user details.
-- **`user_roles`**: Stores roles (`ROLE_ADMIN` and `ROLE_USER`).
-- **`movies`**: Stores added movies with ratings.
-- **`ratings`**: Stores user ratings for movies.
-
-For details about migrations, see the `sql` files under `resources/db/migration`.
-
-
+The system uses a PostgreSQL database with the following main tables:
+- `users`
+- `movies`
+- `ratings`
+- `roles`
