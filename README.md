@@ -79,28 +79,6 @@ docker ps
 
 You should see the `oracle-xe` container listed with port `1521` exposed.
 
-### Stopping and Managing the Docker Container
-
-To stop the Oracle container:
-
-```bash
-docker stop oracle-xe
-```
-
-To restart the container:
-
-```bash
-docker start oracle-xe
-```
-
-To remove the container, use the following commands (note: this will delete your database):
-
-```bash
-docker stop oracle-xe
-docker rm oracle-xe
-```
----
-
 #### Step 4: Connect to the Oracle Database and Create the User
 
 Use a database client (e.g., **SQL Developer**, **IntelliJ Database Tool**, etc.) or a terminal to connect to the database:
@@ -122,6 +100,27 @@ ALTER USER movie_app QUOTA UNLIMITED ON USERS;
 
 Replace `1234` with the desired user password. Ensure this matches your application's configuration file (`application.yml`).
 
+---
+### Stopping and Managing the Docker Container
+
+To stop the Oracle container:
+
+```bash
+docker stop oracle-xe
+```
+
+To restart the container:
+
+```bash
+docker start oracle-xe
+```
+
+To remove the container, use the following commands (note: this will delete your database):
+
+```bash
+docker stop oracle-xe
+docker rm oracle-xe
+```
 ---
 
 ### Running the Application
