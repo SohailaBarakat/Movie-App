@@ -329,8 +329,4 @@ This project uses Flyway for database migrations. The schema includes:
 
 For details about migrations, see the `sql` files under `resources/db/migration`.
 
----
 
-## License
-
-This project is licensed under the MIT License.
