@@ -59,8 +59,6 @@ Run the following command to pull the lightweight Oracle Express Edition (Oracle
 docker pull gvenzl/oracle-xe
 ```
 
-This image is community-maintained and does not require account registration.
-
 #### Step 2: Start the Oracle XE Docker Container
 
 Run the following command to start the container:
