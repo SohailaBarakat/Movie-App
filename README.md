@@ -7,7 +7,6 @@ The **Movie Management System** is a Spring Boot-based application that allows u
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Setup and Installation](#setup-and-installation)
-- [Configuration](#configuration)
 - [Database Schema and Tables](#database-schema-and-tables)
 - [APIs Documentation](#apis-documentation)
   - [Authentication APIs](#authentication-apis)
@@ -130,20 +129,6 @@ spring:
 
 Flyway will automatically set up the database schema and tables when the application starts.
 
----
-
-## Configuration
-
-The application leverages Spring Boot configuration via `application.yml`. Ensure that the following database properties are set correctly:
-
-```yaml
-spring:
-  datasource:
-    url: jdbc:oracle:thin:@localhost:1521/XEPDB1
-    username: movie_app
-    password: 1234
-    driver-class-name: oracle.jdbc.OracleDriver
-```
 ---
 
 ## Database Schema and Tables
