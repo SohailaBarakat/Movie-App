@@ -234,21 +234,85 @@ Search movies in the OMDB API. **Admin role required**.
 **Response** (200 OK):
 ```json
 {
-  "response": {
-    "search": [
-      {
-        "Title": "Movie Title",
-        "Year": "2020",
-        "imdbID": "tt1234567",
-        "Type": "movie",
-        "Poster": "http://link_to_poster"
-      }
-    ],
-    "totalResults": "100",
-    "Response": "True"
-  },
-  "status": true,
-  "currentDate": "2023-10-10T10:00:00.000Z"
+    "response": {
+        "Search": [
+            {
+                "imdbID": "tt14926832",
+                "Title": "Anderson Spider Silva",
+                "Year": "2023",
+                "Type": "series",
+                "Poster": "https://m.media-amazon.com/images/M/MV5BNjQ0ZDZkNmUtMjRiZC00OTQ0LWIyYjQtMWI5ZTYyZWIxNjhkXkEyXkFqcGc@._V1_SX300.jpg"
+            },
+            {
+                "imdbID": "tt2534642",
+                "Title": "Captain Morten and the Spider Queen",
+                "Year": "2018",
+                "Type": "movie",
+                "Poster": "https://m.media-amazon.com/images/M/MV5BYjdiMmRjNjgtMDFhMi00OTMyLThlYzgtNmFhOTk4NzA5ZmVhXkEyXkFqcGc@._V1_SX300.jpg"
+            },
+            {
+                "imdbID": "tt2345761",
+                "Title": "Li'l Spider Girl",
+                "Year": "2012",
+                "Type": "movie",
+                "Poster": "https://m.media-amazon.com/images/M/MV5BYjRmZTAyYTItNGExNy00ZTI5LTk5ODEtN2Y4MDBkYzA0YmNlXkEyXkFqcGc@._V1_SX300.jpg"
+            },
+            {
+                "imdbID": "tt0067934",
+                "Title": "The Legend of Spider Forest",
+                "Year": "1971",
+                "Type": "movie",
+                "Poster": "https://m.media-amazon.com/images/M/MV5BMDRlYzZjOTEtOWEzYy00NjE2LWI0NjMtMjU1NjQzN2ZjMWMzXkEyXkFqcGdeQXVyMTQ2MjQyNDc@._V1_SX300.jpg"
+            },
+            {
+                "imdbID": "tt1687220",
+                "Title": "The Vampire Spider",
+                "Year": "2012",
+                "Type": "movie",
+                "Poster": "https://m.media-amazon.com/images/M/MV5BYmQ4YWI4YWItZDE4NS00MjFkLWEyZTgtY2ViZTQ1YWIzMGQyXkEyXkFqcGdeQXVyNTEwMjA1NTU@._V1_SX300.jpg"
+            },
+            {
+                "imdbID": "tt0354378",
+                "Title": "And Along Came a Spider",
+                "Year": "2003",
+                "Type": "movie",
+                "Poster": "https://m.media-amazon.com/images/M/MV5BYThhYTllMzUtMzQ0Yy00M2I1LTg5NzgtOGU4MDRiMjZkOTc0XkEyXkFqcGdeQXVyMTI1MTg1NzMz._V1_SX300.jpg"
+            },
+            {
+                "imdbID": "tt0420574",
+                "Title": "De Superman à Spider-Man: L'aventure des super-héros",
+                "Year": "2001",
+                "Type": "movie",
+                "Poster": "https://m.media-amazon.com/images/M/MV5BYjE4NmFhNjMtMjFkZS00MTE0LWI5MGUtYTdjMDBjOGU2NjRlXkEyXkFqcGc@._V1_SX300.jpg"
+            },
+            {
+                "imdbID": "tt0813896",
+                "Title": "Spider Riders",
+                "Year": "2005–2007",
+                "Type": "series",
+                "Poster": "https://m.media-amazon.com/images/M/MV5BMTU5OTgxMjYxNV5BMl5BanBnXkFtZTgwNjU5NzIxMzE@._V1_SX300.jpg"
+            },
+            {
+                "imdbID": "tt0163040",
+                "Title": "The Spider and the Tulip",
+                "Year": "1943",
+                "Type": "movie",
+                "Poster": "https://m.media-amazon.com/images/M/MV5BMjZkZTQ5OTEtYzJlZi00ZWNhLWJjYzItN2Q1YTliZGNmNzU0XkEyXkFqcGdeQXVyNjkxOTM4ODY@._V1_SX300.jpg"
+            },
+            {
+                "imdbID": "tt20425026",
+                "Title": "Spider-Man: All Roads Lead to No Way Home",
+                "Year": "2022",
+                "Type": "movie",
+                "Poster": "https://m.media-amazon.com/images/M/MV5BODJlNzRlMDMtNWJkZS00OGFiLThjYmMtOWZjZTBjYjdhYmFlXkEyXkFqcGc@._V1_SX300.jpg"
+            }
+        ],
+        "totalResults": "765",
+        "Response": "True",
+        "Error": null
+    },
+    "status": true,
+    "currentDate": "2025-03-09T11:40:05.486Z"
 }
 ```
 
