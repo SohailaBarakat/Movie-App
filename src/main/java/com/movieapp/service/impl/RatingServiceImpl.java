@@ -3,7 +3,8 @@ package com.movieapp.service.impl;
 import com.movieapp.entity.Movie;
 import com.movieapp.entity.Rating;
 import com.movieapp.entity.User;
-import com.movieapp.exception.handling.MovieNotFoundException;
+import com.movieapp.exception.handling.BaseException;
+import com.movieapp.exception.handling.enums.ErrorMessages;
 import com.movieapp.repository.MovieRepository;
 import com.movieapp.repository.RatingRepository;
 import com.movieapp.service.IRatingService;
@@ -30,7 +31,7 @@ public class RatingServiceImpl implements IRatingService {
         }
 
         Movie movie = movieRepository.findById(movieId)
-                .orElseThrow(() -> new MovieNotFoundException("Movie with ID " + movieId + " not found."));
+                .orElseThrow(() -> new BaseException(ErrorMessages.MOVIE_NOT_FOUND));
 
         Rating rating = new Rating();
         rating.setMovie(movie);

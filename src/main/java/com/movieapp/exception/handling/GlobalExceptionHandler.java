@@ -9,15 +9,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(MovieNotFoundException.class)
-    public ResponseEntity<BaseResponse<String>> handleMovieNotFoundException(MovieNotFoundException ex) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(new BaseResponse<>(ex.getMessage(), false));
-    }
-
-    @ExceptionHandler(MovieAlreadyExistsException.class)
-    public ResponseEntity<BaseResponse<String>> handleMovieAlreadyExistsException(MovieAlreadyExistsException ex) {
-        return ResponseEntity.status(HttpStatus.CONFLICT)
+    @ExceptionHandler(BaseException.class)
+    public ResponseEntity<BaseResponse<String>> handleBaseException(BaseException ex) {
+        return ResponseEntity.status(ex.getStatus())
                 .body(new BaseResponse<>(ex.getMessage(), false));
     }
 
@@ -26,5 +20,4 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(new BaseResponse<>("An error occurred", false));
     }
-
 }

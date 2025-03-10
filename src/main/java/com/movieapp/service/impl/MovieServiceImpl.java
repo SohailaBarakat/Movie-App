@@ -4,11 +4,10 @@ import com.movieapp.client.OmdbClient;
 import com.movieapp.dto.MovieDto;
 import com.movieapp.dto.MovieShortInfoDto;
 import com.movieapp.entity.Movie;
-import com.movieapp.exception.handling.MovieAlreadyExistsException;
-import com.movieapp.exception.handling.MovieNotFoundException;
+import com.movieapp.exception.handling.BaseException;
+import com.movieapp.exception.handling.enums.ErrorMessages;
 import com.movieapp.mapper.MovieMapper;
 import com.movieapp.repository.MovieRepository;
-import com.movieapp.repository.RatingRepository;
 import com.movieapp.service.IMovieService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,13 +41,13 @@ public class MovieServiceImpl implements IMovieService {
     @Override
     public void addMovie(String imdbId) {
         if (movieRepository.existsByImdbId(imdbId)) {
-            throw new MovieAlreadyExistsException("Movie with IMDb ID " + imdbId + " already exists in the database.");
+            throw new BaseException(ErrorMessages.MOVIE_ALREADY_EXISTS);
         }
 
 
         MovieDto movieDto = omdbClient.getMovieDetails(imdbId, apiKey);
         if (movieDto.getResponse().equals("False")) {
-            throw new MovieNotFoundException("Movie with imdbID " + imdbId + " not found.");
+            throw new BaseException(ErrorMessages.MOVIE_NOT_FOUND);
         }
 
         Movie movieEntity = MovieMapper.toEntity(movieDto);
@@ -62,7 +61,7 @@ public class MovieServiceImpl implements IMovieService {
     @Override
     public void removeMovie(Long movieId) {
         Movie movieEntity = movieRepository.findById(movieId)
-                .orElseThrow(() -> new MovieNotFoundException("Movie with ID " + movieId + " not found."));
+                .orElseThrow(() -> new BaseException(ErrorMessages.MOVIE_NOT_FOUND));
 
         movieRepository.delete(movieEntity);
         log.info("Movie with ID {} successfully removed from the database.", movieId);
@@ -92,7 +91,7 @@ public class MovieServiceImpl implements IMovieService {
     @Override
     public MovieDto getMovieById(Long id) {
         Movie movie = movieRepository.findById(id)
-                .orElseThrow(() -> new MovieNotFoundException("Movie not found with IMDb ID: " + id));
+                .orElseThrow(() -> new BaseException(ErrorMessages.MOVIE_NOT_FOUND));
 
         return MovieMapper.toDto(movie);
     }

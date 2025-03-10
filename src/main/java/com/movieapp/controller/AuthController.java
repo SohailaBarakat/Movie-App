@@ -3,6 +3,8 @@ package com.movieapp.controller;
 import com.movieapp.dto.*;
 import com.movieapp.entity.User;
 import com.movieapp.entity.UserRole;
+import com.movieapp.exception.handling.BaseException;
+import com.movieapp.exception.handling.enums.ErrorMessages;
 import com.movieapp.repository.UserRepository;
 import com.movieapp.repository.UserRoleRepository;
 import com.movieapp.security.JwtUtils;
@@ -60,8 +62,7 @@ public class AuthController {
     @PostMapping("/sign-up")
     public ResponseEntity<BaseResponse<MessageResponse>> registerUser(@Valid @RequestBody SignupRequest signupRequest) {
         if (userRepository.existsByEmail(signupRequest.getEmail())) {
-            return ResponseEntity.badRequest()
-                    .body(new BaseResponse<>(new MessageResponse("Error: Email is already in use!")));
+            throw new BaseException(ErrorMessages.EMAIL_ALREADY_IN_USE);
         }
 
         UserRole role = userRoleRepository.findByRoleName("ROLE_USER");
