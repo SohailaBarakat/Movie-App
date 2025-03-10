@@ -1,0 +1,22 @@
+<div class="search-container">
+    <input #searchBox type="text" placeholder="Enter movie title..." class="search-box" />
+    <button (click)="search(searchBox.value)" class="search-btn">🔍 Search</button>
+  </div>
+  <button (click)="signOut()" class="signout-btn">🚪 Sign Out</button>
+  
+  <div *ngIf="movies.length > 0" class="results-container">
+    <h2>🎬 Search Results:</h2>
+    <div class="movies-grid">
+      <div *ngFor="let movie of paginatedFilms" class="movie-card" (click)="openFilmDetails(movie)">
+        <h3 style="color: white;">{{ movie.title }} ({{ movie.year }})</h3>
+        <img [src]="movie.poster" alt="{{ movie.title }}" class="movie-poster" />
+      </div>
+    </div>
+  
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">⬅️ Previous</button>
+      <span>Page {{ currentPage }} / {{ Math.ceil(movies.length / moviesPerPage) }}</span>
+      <button (click)="nextPage()" [disabled]="(currentPage * moviesPerPage) >= movies.length">Next ➡️</button>
+    </div>
+  </div>
+  
