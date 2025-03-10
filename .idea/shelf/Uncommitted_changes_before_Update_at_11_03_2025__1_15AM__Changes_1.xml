@@ -1,0 +1,198 @@
+<changelist name="Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1" date="1741648573345" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/03/2025, 1:15 AM [Changes]" />
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/service/IOmdbMovieService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/IOmdbMovieService.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/dto/MovieDto$MovieDtoBuilder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/MovieDto$MovieDtoBuilder.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/dto/MessageResponse.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/MessageResponse.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/dto/SignupRequest$SignupRequestBuilder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/SignupRequest$SignupRequestBuilder.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/dto/MovieShortInfoDto$MovieShortInfoDtoBuilder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/MovieShortInfoDto$MovieShortInfoDtoBuilder.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/dto/OmdbSearchDto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/OmdbSearchDto.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/entity/User.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/User.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/service/impl/OmdbMovieService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/OmdbMovieService.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/dto/LoginRequest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/LoginRequest.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/repository/UserRoleRepository.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/UserRoleRepository.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/entity/UserRole.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/UserRole.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/dto/MovieDto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/MovieDto.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/security/UserDetailsImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/UserDetailsImpl.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/security/JwtUtils.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/JwtUtils.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/entity/Movie.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/Movie.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/controller/RatingController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/RatingController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="mvnw" />
+    <option name="AFTER_PATH" value="BE/mvnw" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/mvnw" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/mapper/MovieMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/MovieMapper.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/dto/OmdbMovieDto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/OmdbMovieDto.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/exception/handling/BaseException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/BaseException.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/security/UserDetailsServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/UserDetailsServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/dto/SignupRequest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/SignupRequest.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/controller/MovieController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/MovieController.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/security/AuthEntryPointJwt.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/AuthEntryPointJwt.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/repository/MovieRepository.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/MovieRepository.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/config/OpenApiConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/OpenApiConfig.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/service/impl/MovieServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/MovieServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/dto/MessageResponse$MessageResponseBuilder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/MessageResponse$MessageResponseBuilder.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/repository/RatingRepository.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/RatingRepository.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/repository/UserRepository.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/UserRepository.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/security/WebSecurityConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/WebSecurityConfig.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/test-classes/com/movieapp/MovieAppApplicationTests.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/MovieAppApplicationTests.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/controller/OmdbMovieController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/OmdbMovieController.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/service/IMovieService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/IMovieService.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/exception/handling/enums/ErrorMessages.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/ErrorMessages.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/controller/AuthController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/AuthController.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/exception/handling/GlobalExceptionHandler.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/GlobalExceptionHandler.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/service/impl/RatingServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/RatingServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/dto/MovieShortInfoDto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/MovieShortInfoDto.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/security/AuthTokenFilter.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/AuthTokenFilter.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/dto/BaseResponse.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/BaseResponse.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/dto/LoginRequest$LoginRequestBuilder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/LoginRequest$LoginRequestBuilder.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/MovieAppApplication.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/MovieAppApplication.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/entity/Rating.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/Rating.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/client/OmdbClient.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/OmdbClient.class" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/dto/JwtResponse.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/JwtResponse.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="mvnw.cmd" />
+    <option name="AFTER_PATH" value="BE/mvnw.cmd" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/mvnw.cmd" />
+  </binary>
+  <binary>
+    <option name="AFTER_PATH" value="BE/target/classes/com/movieapp/service/IRatingService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_03_2025,_1_15 AM_[Changes]1/IRatingService.class" />
+  </binary>
+</changelist>

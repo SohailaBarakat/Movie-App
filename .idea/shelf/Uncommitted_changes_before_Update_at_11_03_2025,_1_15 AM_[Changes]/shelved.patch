@@ -1,0 +1,284 @@
+Index: src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/application.yml b/BE/src/main/resources/application.yml
+rename from src/main/resources/application.yml
+rename to BE/src/main/resources/application.yml
+--- a/src/main/resources/application.yml	(revision 64d0e1583c16e8da7ac2bcf5455f0b1d23bcaf15)
++++ b/BE/src/main/resources/application.yml	(date 1741520125564)
+@@ -3,7 +3,7 @@
+     name: MovieApp
+ 
+   datasource:
+-    url: jdbc:oracle:thin:@localhost:1521:xe
++    url: jdbc:oracle:thin:@localhost:1522:xe
+     username: movie_app
+     password: 1234
+     driver-class-name: oracle.jdbc.OracleDriver
+Index: src/main/java/com/movieapp/service/IMovieService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/movieapp/service/IMovieService.java b/BE/src/main/java/com/movieapp/service/IMovieService.java
+rename from src/main/java/com/movieapp/service/IMovieService.java
+rename to BE/src/main/java/com/movieapp/service/IMovieService.java
+--- a/src/main/java/com/movieapp/service/IMovieService.java	(revision 64d0e1583c16e8da7ac2bcf5455f0b1d23bcaf15)
++++ b/BE/src/main/java/com/movieapp/service/IMovieService.java	(date 1741639150918)
+@@ -9,9 +9,9 @@
+ 
+ public interface IMovieService {
+     void addMovie(String adminId);
+-    void removeMovie(Long movieId);
++    void removeMovie(String imdbId);
+     Map<String, Object> getAllMovies(int page, int size);
+-    MovieDto getMovieById(Long id);
++    MovieDto getMovieById(String imdbId);
+     List<MovieShortInfoDto> searchMovies(String title, String year, String director);
+ 
+ 
+Index: src/main/java/com/movieapp/repository/MovieRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/movieapp/repository/MovieRepository.java b/BE/src/main/java/com/movieapp/repository/MovieRepository.java
+rename from src/main/java/com/movieapp/repository/MovieRepository.java
+rename to BE/src/main/java/com/movieapp/repository/MovieRepository.java
+--- a/src/main/java/com/movieapp/repository/MovieRepository.java	(revision 64d0e1583c16e8da7ac2bcf5455f0b1d23bcaf15)
++++ b/BE/src/main/java/com/movieapp/repository/MovieRepository.java	(date 1741639150944)
+@@ -10,6 +10,7 @@
+ 
+ 
+ import java.util.List;
++import java.util.Optional;
+ 
+ 
+ @Repository
+@@ -17,6 +18,9 @@
+ 
+     boolean existsByImdbId(String imdbId);
+ 
++
++    Optional<Movie> findByImdbId(String imdbId);
++
+     Page<Movie> findAll(Pageable pageable);
+ 
+     @Query("SELECT m FROM Movie m " +
+Index: src/main/java/com/movieapp/security/WebSecurityConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/movieapp/security/WebSecurityConfig.java b/BE/src/main/java/com/movieapp/security/WebSecurityConfig.java
+rename from src/main/java/com/movieapp/security/WebSecurityConfig.java
+rename to BE/src/main/java/com/movieapp/security/WebSecurityConfig.java
+--- a/src/main/java/com/movieapp/security/WebSecurityConfig.java	(revision 64d0e1583c16e8da7ac2bcf5455f0b1d23bcaf15)
++++ b/BE/src/main/java/com/movieapp/security/WebSecurityConfig.java	(date 1741636841006)
+@@ -49,7 +49,7 @@
+     @Bean
+     public CorsConfigurationSource corsConfigurationSource() {
+         CorsConfiguration configuration = new CorsConfiguration();
+-        configuration.setAllowedOrigins(List.of("*"));
++        configuration.setAllowedOrigins(List.of("http://localhost:4200"));
+         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+         configuration.setAllowedHeaders(List.of("*"));
+         configuration.setAllowCredentials(true);
+Index: src/main/java/com/movieapp/controller/MovieController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/movieapp/controller/MovieController.java b/BE/src/main/java/com/movieapp/controller/MovieController.java
+rename from src/main/java/com/movieapp/controller/MovieController.java
+rename to BE/src/main/java/com/movieapp/controller/MovieController.java
+--- a/src/main/java/com/movieapp/controller/MovieController.java	(revision 64d0e1583c16e8da7ac2bcf5455f0b1d23bcaf15)
++++ b/BE/src/main/java/com/movieapp/controller/MovieController.java	(date 1741639302216)
+@@ -36,11 +36,11 @@
+         return ResponseEntity.ok(new BaseResponse<>("Movie with IMDb ID " + imdbId + " has been added successfully."));
+     }
+ 
+-    @DeleteMapping("/remove")
++    @DeleteMapping("/remove/{imdbId}")
+     @PreAuthorize("hasRole('ADMIN')")
+-    public ResponseEntity<BaseResponse<String>> removeMovie(@RequestParam("movieId") Long movieId) {
+-        movieService.removeMovie(movieId);
+-        return ResponseEntity.ok(new BaseResponse<>("Movie with ID " + movieId + " has been removed successfully."));
++    public ResponseEntity<BaseResponse<String>> removeMovie(@PathVariable String imdbId ) {
++        movieService.removeMovie(imdbId);
++        return ResponseEntity.ok(new BaseResponse<>("Movie with imdbID " + imdbId + " has been removed successfully."));
+     }
+ 
+     @GetMapping
+@@ -67,9 +67,9 @@
+ 
+ 
+ 
+-    @GetMapping("/{id}")
+-    public ResponseEntity<BaseResponse<MovieDto>> getMovieById(@PathVariable("id") Long id) {
+-        MovieDto movieDto = movieService.getMovieById(id);
++    @GetMapping("/{imdbId}")
++    public ResponseEntity<BaseResponse<MovieDto>> getMovieById(@PathVariable("imdbId") String imdbId) {
++        MovieDto movieDto = movieService.getMovieById(imdbId);
+         return ResponseEntity.ok(new BaseResponse<>(movieDto));
+     }
+ 
+Index: src/main/java/com/movieapp/service/impl/MovieServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/movieapp/service/impl/MovieServiceImpl.java b/BE/src/main/java/com/movieapp/service/impl/MovieServiceImpl.java
+rename from src/main/java/com/movieapp/service/impl/MovieServiceImpl.java
+rename to BE/src/main/java/com/movieapp/service/impl/MovieServiceImpl.java
+--- a/src/main/java/com/movieapp/service/impl/MovieServiceImpl.java	(revision 64d0e1583c16e8da7ac2bcf5455f0b1d23bcaf15)
++++ b/BE/src/main/java/com/movieapp/service/impl/MovieServiceImpl.java	(date 1741639150881)
+@@ -59,12 +59,12 @@
+ 
+ 
+     @Override
+-    public void removeMovie(Long movieId) {
+-        Movie movieEntity = movieRepository.findById(movieId)
++    public void removeMovie(String imdbId) {
++        Movie movieEntity = movieRepository.findByImdbId(imdbId)
+                 .orElseThrow(() -> new BaseException(ErrorMessages.MOVIE_NOT_FOUND));
+ 
+         movieRepository.delete(movieEntity);
+-        log.info("Movie with ID {} successfully removed from the database.", movieId);
++        log.info("Movie with imdbId {} successfully removed from the database.", imdbId);
+     }
+ 
+ 
+@@ -89,8 +89,8 @@
+ 
+ 
+     @Override
+-    public MovieDto getMovieById(Long id) {
+-        Movie movie = movieRepository.findById(id)
++    public MovieDto getMovieById(String imdbId) {
++        Movie movie = movieRepository.findByImdbId(imdbId)
+                 .orElseThrow(() -> new BaseException(ErrorMessages.MOVIE_NOT_FOUND));
+ 
+         return MovieMapper.toDto(movie);
+diff --git a/src/main/java/com/movieapp/MovieAppApplication.java b/BE/src/main/java/com/movieapp/MovieAppApplication.java
+rename from src/main/java/com/movieapp/MovieAppApplication.java
+rename to BE/src/main/java/com/movieapp/MovieAppApplication.java
+diff --git a/src/main/resources/db/migration/V1__Create_Tables.sql b/BE/src/main/resources/db/migration/V1__Create_Tables.sql
+rename from src/main/resources/db/migration/V1__Create_Tables.sql
+rename to BE/src/main/resources/db/migration/V1__Create_Tables.sql
+diff --git a/src/main/resources/db/migration/V2__Insert_Into_User_Roles.sql b/BE/src/main/resources/db/migration/V2__Insert_Into_User_Roles.sql
+rename from src/main/resources/db/migration/V2__Insert_Into_User_Roles.sql
+rename to BE/src/main/resources/db/migration/V2__Insert_Into_User_Roles.sql
+diff --git a/src/main/resources/db/migration/V3__Insert_Into_Users.sql b/BE/src/main/resources/db/migration/V3__Insert_Into_Users.sql
+rename from src/main/resources/db/migration/V3__Insert_Into_Users.sql
+rename to BE/src/main/resources/db/migration/V3__Insert_Into_Users.sql
+diff --git a/src/test/java/com/movieapp/MovieAppApplicationTests.java b/BE/src/test/java/com/movieapp/MovieAppApplicationTests.java
+rename from src/test/java/com/movieapp/MovieAppApplicationTests.java
+rename to BE/src/test/java/com/movieapp/MovieAppApplicationTests.java
+diff --git a/src/main/java/com/movieapp/dto/OmdbMovieDto.java b/BE/src/main/java/com/movieapp/dto/OmdbMovieDto.java
+rename from src/main/java/com/movieapp/dto/OmdbMovieDto.java
+rename to BE/src/main/java/com/movieapp/dto/OmdbMovieDto.java
+diff --git a/src/main/java/com/movieapp/dto/OmdbSearchDto.java b/BE/src/main/java/com/movieapp/dto/OmdbSearchDto.java
+rename from src/main/java/com/movieapp/dto/OmdbSearchDto.java
+rename to BE/src/main/java/com/movieapp/dto/OmdbSearchDto.java
+diff --git a/src/main/java/com/movieapp/dto/SignupRequest.java b/BE/src/main/java/com/movieapp/dto/SignupRequest.java
+rename from src/main/java/com/movieapp/dto/SignupRequest.java
+rename to BE/src/main/java/com/movieapp/dto/SignupRequest.java
+diff --git a/src/main/java/com/movieapp/dto/MovieShortInfoDto.java b/BE/src/main/java/com/movieapp/dto/MovieShortInfoDto.java
+rename from src/main/java/com/movieapp/dto/MovieShortInfoDto.java
+rename to BE/src/main/java/com/movieapp/dto/MovieShortInfoDto.java
+diff --git a/src/main/java/com/movieapp/entity/User.java b/BE/src/main/java/com/movieapp/entity/User.java
+rename from src/main/java/com/movieapp/entity/User.java
+rename to BE/src/main/java/com/movieapp/entity/User.java
+diff --git a/src/main/java/com/movieapp/entity/Rating.java b/BE/src/main/java/com/movieapp/entity/Rating.java
+rename from src/main/java/com/movieapp/entity/Rating.java
+rename to BE/src/main/java/com/movieapp/entity/Rating.java
+diff --git a/src/main/java/com/movieapp/entity/Movie.java b/BE/src/main/java/com/movieapp/entity/Movie.java
+rename from src/main/java/com/movieapp/entity/Movie.java
+rename to BE/src/main/java/com/movieapp/entity/Movie.java
+diff --git a/src/main/java/com/movieapp/mapper/MovieMapper.java b/BE/src/main/java/com/movieapp/mapper/MovieMapper.java
+rename from src/main/java/com/movieapp/mapper/MovieMapper.java
+rename to BE/src/main/java/com/movieapp/mapper/MovieMapper.java
+diff --git a/src/main/java/com/movieapp/service/IOmdbMovieService.java b/BE/src/main/java/com/movieapp/service/IOmdbMovieService.java
+rename from src/main/java/com/movieapp/service/IOmdbMovieService.java
+rename to BE/src/main/java/com/movieapp/service/IOmdbMovieService.java
+diff --git a/src/main/java/com/movieapp/service/IRatingService.java b/BE/src/main/java/com/movieapp/service/IRatingService.java
+rename from src/main/java/com/movieapp/service/IRatingService.java
+rename to BE/src/main/java/com/movieapp/service/IRatingService.java
+diff --git a/src/main/java/com/movieapp/dto/BaseResponse.java b/BE/src/main/java/com/movieapp/dto/BaseResponse.java
+rename from src/main/java/com/movieapp/dto/BaseResponse.java
+rename to BE/src/main/java/com/movieapp/dto/BaseResponse.java
+diff --git a/src/main/java/com/movieapp/dto/LoginRequest.java b/BE/src/main/java/com/movieapp/dto/LoginRequest.java
+rename from src/main/java/com/movieapp/dto/LoginRequest.java
+rename to BE/src/main/java/com/movieapp/dto/LoginRequest.java
+diff --git a/src/main/java/com/movieapp/dto/MessageResponse.java b/BE/src/main/java/com/movieapp/dto/MessageResponse.java
+rename from src/main/java/com/movieapp/dto/MessageResponse.java
+rename to BE/src/main/java/com/movieapp/dto/MessageResponse.java
+diff --git a/src/main/java/com/movieapp/dto/MovieDto.java b/BE/src/main/java/com/movieapp/dto/MovieDto.java
+rename from src/main/java/com/movieapp/dto/MovieDto.java
+rename to BE/src/main/java/com/movieapp/dto/MovieDto.java
+diff --git a/src/main/java/com/movieapp/dto/JwtResponse.java b/BE/src/main/java/com/movieapp/dto/JwtResponse.java
+rename from src/main/java/com/movieapp/dto/JwtResponse.java
+rename to BE/src/main/java/com/movieapp/dto/JwtResponse.java
+diff --git a/src/main/java/com/movieapp/client/OmdbClient.java b/BE/src/main/java/com/movieapp/client/OmdbClient.java
+rename from src/main/java/com/movieapp/client/OmdbClient.java
+rename to BE/src/main/java/com/movieapp/client/OmdbClient.java
+diff --git a/src/main/java/com/movieapp/config/OpenApiConfig.java b/BE/src/main/java/com/movieapp/config/OpenApiConfig.java
+rename from src/main/java/com/movieapp/config/OpenApiConfig.java
+rename to BE/src/main/java/com/movieapp/config/OpenApiConfig.java
+diff --git a/src/main/java/com/movieapp/entity/UserRole.java b/BE/src/main/java/com/movieapp/entity/UserRole.java
+rename from src/main/java/com/movieapp/entity/UserRole.java
+rename to BE/src/main/java/com/movieapp/entity/UserRole.java
+diff --git a/src/main/java/com/movieapp/controller/RatingController.java b/BE/src/main/java/com/movieapp/controller/RatingController.java
+rename from src/main/java/com/movieapp/controller/RatingController.java
+rename to BE/src/main/java/com/movieapp/controller/RatingController.java
+diff --git a/src/main/java/com/movieapp/controller/AuthController.java b/BE/src/main/java/com/movieapp/controller/AuthController.java
+rename from src/main/java/com/movieapp/controller/AuthController.java
+rename to BE/src/main/java/com/movieapp/controller/AuthController.java
+diff --git a/src/main/java/com/movieapp/controller/OmdbMovieController.java b/BE/src/main/java/com/movieapp/controller/OmdbMovieController.java
+rename from src/main/java/com/movieapp/controller/OmdbMovieController.java
+rename to BE/src/main/java/com/movieapp/controller/OmdbMovieController.java
+diff --git a/src/main/java/com/movieapp/repository/RatingRepository.java b/BE/src/main/java/com/movieapp/repository/RatingRepository.java
+rename from src/main/java/com/movieapp/repository/RatingRepository.java
+rename to BE/src/main/java/com/movieapp/repository/RatingRepository.java
+diff --git a/src/main/java/com/movieapp/repository/UserRoleRepository.java b/BE/src/main/java/com/movieapp/repository/UserRoleRepository.java
+rename from src/main/java/com/movieapp/repository/UserRoleRepository.java
+rename to BE/src/main/java/com/movieapp/repository/UserRoleRepository.java
+diff --git a/src/main/java/com/movieapp/repository/UserRepository.java b/BE/src/main/java/com/movieapp/repository/UserRepository.java
+rename from src/main/java/com/movieapp/repository/UserRepository.java
+rename to BE/src/main/java/com/movieapp/repository/UserRepository.java
+diff --git a/src/main/java/com/movieapp/service/impl/RatingServiceImpl.java b/BE/src/main/java/com/movieapp/service/impl/RatingServiceImpl.java
+rename from src/main/java/com/movieapp/service/impl/RatingServiceImpl.java
+rename to BE/src/main/java/com/movieapp/service/impl/RatingServiceImpl.java
+diff --git a/src/main/java/com/movieapp/security/JwtUtils.java b/BE/src/main/java/com/movieapp/security/JwtUtils.java
+rename from src/main/java/com/movieapp/security/JwtUtils.java
+rename to BE/src/main/java/com/movieapp/security/JwtUtils.java
+diff --git a/src/main/java/com/movieapp/security/AuthEntryPointJwt.java b/BE/src/main/java/com/movieapp/security/AuthEntryPointJwt.java
+rename from src/main/java/com/movieapp/security/AuthEntryPointJwt.java
+rename to BE/src/main/java/com/movieapp/security/AuthEntryPointJwt.java
+diff --git a/src/main/java/com/movieapp/security/AuthTokenFilter.java b/BE/src/main/java/com/movieapp/security/AuthTokenFilter.java
+rename from src/main/java/com/movieapp/security/AuthTokenFilter.java
+rename to BE/src/main/java/com/movieapp/security/AuthTokenFilter.java
+diff --git a/src/main/java/com/movieapp/security/UserDetailsServiceImpl.java b/BE/src/main/java/com/movieapp/security/UserDetailsServiceImpl.java
+rename from src/main/java/com/movieapp/security/UserDetailsServiceImpl.java
+rename to BE/src/main/java/com/movieapp/security/UserDetailsServiceImpl.java
+diff --git a/src/main/java/com/movieapp/security/UserDetailsImpl.java b/BE/src/main/java/com/movieapp/security/UserDetailsImpl.java
+rename from src/main/java/com/movieapp/security/UserDetailsImpl.java
+rename to BE/src/main/java/com/movieapp/security/UserDetailsImpl.java
+diff --git a/src/main/java/com/movieapp/service/impl/OmdbMovieService.java b/BE/src/main/java/com/movieapp/service/impl/OmdbMovieService.java
+rename from src/main/java/com/movieapp/service/impl/OmdbMovieService.java
+rename to BE/src/main/java/com/movieapp/service/impl/OmdbMovieService.java
+diff --git a/src/main/java/com/movieapp/exception/handling/GlobalExceptionHandler.java b/BE/src/main/java/com/movieapp/exception/handling/GlobalExceptionHandler.java
+rename from src/main/java/com/movieapp/exception/handling/GlobalExceptionHandler.java
+rename to BE/src/main/java/com/movieapp/exception/handling/GlobalExceptionHandler.java
+diff --git a/src/main/java/com/movieapp/exception/handling/BaseException.java b/BE/src/main/java/com/movieapp/exception/handling/BaseException.java
+rename from src/main/java/com/movieapp/exception/handling/BaseException.java
+rename to BE/src/main/java/com/movieapp/exception/handling/BaseException.java
+diff --git a/src/main/java/com/movieapp/exception/handling/enums/ErrorMessages.java b/BE/src/main/java/com/movieapp/exception/handling/enums/ErrorMessages.java
+rename from src/main/java/com/movieapp/exception/handling/enums/ErrorMessages.java
+rename to BE/src/main/java/com/movieapp/exception/handling/enums/ErrorMessages.java
+diff --git a/pom.xml b/BE/pom.xml
+rename from pom.xml
+rename to BE/pom.xml
