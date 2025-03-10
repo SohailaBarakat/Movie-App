@@ -1,7 +1,7 @@
 package com.movieapp.controller;
 
 import com.movieapp.dto.BaseResponse;
-import com.movieapp.dto.OmdbSearchResponse;
+import com.movieapp.dto.OmdbSearchDto;
 import com.movieapp.service.IOmdbMovieService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +23,10 @@ public class OmdbMovieController {
 
     @RequestMapping("/search")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<BaseResponse<OmdbSearchResponse>> search(
+    public ResponseEntity<BaseResponse<OmdbSearchDto>> search(
             @RequestParam(name = "title") String title,
             @RequestParam(defaultValue = "1") int page) {
-        OmdbSearchResponse response = omdbMovieService.search(title, page);
+        OmdbSearchDto response = omdbMovieService.search(title, page);
         return ResponseEntity.ok(new BaseResponse<>(response));
     }
 

@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class OmdbSearchResponse {
+public class OmdbSearchDto {
 
     @JsonProperty("Search")
     private List<OmdbMovieDto> search;

@@ -1,9 +1,9 @@
 package com.movieapp.service;
 
-import com.movieapp.dto.OmdbSearchResponse;
+import com.movieapp.dto.OmdbSearchDto;
 
 public interface IOmdbMovieService {
-    OmdbSearchResponse search(String title,int page);
+    OmdbSearchDto search(String title, int page);
 
 
 }

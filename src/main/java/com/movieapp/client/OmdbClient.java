@@ -1,8 +1,7 @@
 package com.movieapp.client;//package com.movieapp.client;
 
 import com.movieapp.dto.MovieDto;
-import com.movieapp.dto.OmdbSearchResponse;
-import org.springframework.stereotype.Component;
+import com.movieapp.dto.OmdbSearchDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -13,7 +12,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 public interface OmdbClient {
 
     @GetMapping("/")
-    OmdbSearchResponse searchMovies(
+    OmdbSearchDto searchMovies(
             @RequestParam("s") String query,
             @RequestParam("apikey") String apiKey,
             @RequestParam("page") int page

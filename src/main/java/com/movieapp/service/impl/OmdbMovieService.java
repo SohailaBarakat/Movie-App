@@ -2,7 +2,7 @@ package com.movieapp.service.impl;
 
 
 import com.movieapp.client.OmdbClient;
-import com.movieapp.dto.OmdbSearchResponse;
+import com.movieapp.dto.OmdbSearchDto;
 import com.movieapp.service.IOmdbMovieService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class OmdbMovieService implements IOmdbMovieService {
 
 
     @Override
-    public OmdbSearchResponse search(String name, int page) {
+    public OmdbSearchDto search(String name, int page) {
         return omdbClient.searchMovies(name, apiKey,page);
     }
 
