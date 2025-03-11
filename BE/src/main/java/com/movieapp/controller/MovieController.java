@@ -46,7 +46,7 @@ public class MovieController {
     @GetMapping
     public ResponseEntity<BaseResponse<Map<String, Object>>> getAllMovies(
             @RequestParam(defaultValue = "1") int page,  // User-friendly 1-based page number
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "8") int size) {
 
         if (page < 1) {
             return ResponseEntity.badRequest()
