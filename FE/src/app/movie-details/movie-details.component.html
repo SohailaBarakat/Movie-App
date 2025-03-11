@@ -1,9 +1,22 @@
-<h2 mat-dialog-title class="dialog-title" style="margin: auto;">{{ movie.Title }}</h2>
-<mat-dialog-content class="movie-dialog-content">
-  <img [src]="movie.Poster" alt="{{ movie.Title }}" class="movie-poster" />
-  <p><strong>🗓 Year:</strong> {{ movie.Year }}</p>
+<div class="movie-details-container">
+    <!-- Movie Poster -->
+    <div class="poster-container">
+        <img [src]="data.Poster" alt="Movie Poster">
+    </div>
 
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button (click)="close()" class="close-btn">❌ Close</button>
-</mat-dialog-actions>
+    <!-- Movie Information -->
+    <div class="details-container">
+        <h2>{{ data.Title }}</h2>
+        <p><strong>Year:</strong> {{ data.Year }}</p>
+        <p><strong>Genre:</strong> {{ data.Genre }}</p>
+        <p><strong>Director:</strong> {{ data.Director }}</p>
+        <p><strong>Writer:</strong> {{ data.Writer }}</p>
+        <p><strong>Actors:</strong> {{ data.Actors }}</p>
+        <p><strong>Plot:</strong> {{ data.Plot }}</p>
+        <p><strong>Language:</strong> {{ data.Language }}</p>
+        <p><strong>Average Rating:</strong> {{ data.averageRating }}</p>
+    </div>
+</div>
+
+<!-- Close Button -->
+<button class="close-btn" (click)="closeDialog()">Close</button>

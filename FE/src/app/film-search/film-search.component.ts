@@ -1,41 +1,44 @@
-import { Component } from '@angular/core';
-import { FilmService } from '../film.service';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { MovieDetailsComponent } from '../movie-details/movie-details.component';
-import { MovieService } from '../movie.service';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { MovieDetailsComponent } from '../movie-details/movie-details.component';
+import {FormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
+import {Movie} from "../models/Movie";
 
 @Component({
   selector: 'app-film-search',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
   templateUrl: './film-search.component.html',
-  styleUrls: ['./film-search.component.css']
+  standalone: true,
+  styleUrls: ['./film-search.component.css'],
+  imports: [CommonModule, FormsModule]
 })
-export class FilmSearchComponent {
-  movies: any[] = [];
-  films: any[] = [];
-  addedMovies = new Set<string>(); 
+export class FilmSearchComponent implements OnInit {
+  movies: Movie[] = []; // ✅ Movies list
   currentPage: number = 1;
-  moviesPerPage: number = 18;
-  Math = Math;
+  moviesPerPage: number = 8;
+  totalPages: number = 1; // ✅ Track total pages
+  searchTitle: string = '';
+  searchYear: string = '';
+  searchDirector: string = '';
+  isSearching: boolean = false; // ✅ Track if search is active
+  private backendApiUrl = 'http://localhost:8080/api/movie';
 
+  constructor(
+      private http: HttpClient,
+      public dialog: MatDialog,
+      private router: Router
+  ) {}
 
-
-  
-  private backendApiUrl = 'http://localhost:8080/api/movie/search';
-
-  constructor(private http: HttpClient,private filmService: FilmService, public dialog: MatDialog, private movieService: MovieService, private router: Router) {}
+  ngOnInit() {
+    console.log("Fetching movies on init...");
+    this.fetchMovies(1); // ✅ Load initial movies
+  }
 
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
@@ -43,54 +46,102 @@ export class FilmSearchComponent {
     return headers;
   }
 
-  search(title: string) {
-    this.currentPage = 1;
-    this.http.get<{ response: any[], status: boolean }>(`${this.backendApiUrl}?title=${title}`, { headers: this.getHeaders() })
-      .subscribe(
-        (data) => {
-          if (data.status && data.response) {
-            this.movies = data.response; // ✅ Correctly accessing movies inside `response`
-          } else {
-            this.movies = []; // ✅ Clear movies if no data
-          }
-        },
-        (error) => {
-          console.error('Error fetching movies:', error);
-          this.movies = []; // ✅ Clear movies on error
-        }
-      );
-  }
-  
+  fetchMovies(page: number = 1) {
+    if (this.isSearching) return; // ✅ Don't fetch new pages if searching
 
+    this.currentPage = page;
+    const url = `${this.backendApiUrl}?page=${page}&size=${this.moviesPerPage}`; // ✅ Backend is 0-based index
 
-  openFilmDetails(film: any) {
-    this.dialog.open(MovieDetailsComponent, {
-      data: film,
-      width: '500px'
-    });
+    this.http.get<{ response: any, status: boolean }>(url, { headers: this.getHeaders() })
+        .subscribe(
+            (data) => {
+              console.log('API Response:', data);
+              if (data.status && data.response) {
+                this.movies = data.response.content || []; // ✅ Extract movies correctly
+                this.totalPages = data.response.totalPages || 1;
+              } else {
+                this.movies = [];
+              }
+            },
+            (error) => {
+              console.error('Error fetching movies:', error);
+              this.movies = [];
+            }
+        );
   }
 
-  get paginatedFilms() {
-    const startIndex = (this.currentPage - 1) * this.moviesPerPage;
-    return this.movies.slice(startIndex, startIndex + this.moviesPerPage);
+  searchMovies() {
+    this.isSearching = true; // ✅ Mark as searching
+
+    const searchParams = new URLSearchParams();
+    if (this.searchTitle) searchParams.append('title', this.searchTitle);
+    if (this.searchYear) searchParams.append('year', this.searchYear);
+    if (this.searchDirector) searchParams.append('director', this.searchDirector);
+
+    const url = `${this.backendApiUrl}/search?${searchParams.toString()}`;
+
+    this.http.get<{ response: Movie[], status: boolean }>(url, { headers: this.getHeaders() })
+        .subscribe(
+            (data) => {
+              this.movies = data.status ? data.response || [] : [];
+              this.isSearching = false;
+              this.currentPage = 1; // ✅ Reset page for search
+            },
+            (error) => {
+              console.error('Error searching movies:', error);
+              this.movies = [];
+              this.isSearching = false;
+            }
+        );
+  }
+
+  openFilmDetails(movie: Movie) {
+    console.log("Opening details for IMDb ID:", movie.imdbID);
+    const url = `http://localhost:8080/api/movie/${movie.imdbID}`;
+
+    this.http.get<{ response: Movie, status: boolean }>(url, { headers: this.getHeaders() })
+        .subscribe(
+            (data) => {
+              if (data.status && data.response) {
+                this.dialog.open(MovieDetailsComponent, {
+                  data: data.response,
+                  width: '500px'
+                });
+              } else {
+                console.error("Movie details not found");
+              }
+            },
+            (error) => console.error("Error fetching movie details:", error)
+        );
   }
 
   nextPage() {
-    if ((this.currentPage * this.moviesPerPage) < this.movies.length) {
-      this.currentPage++;
+    if (this.currentPage < this.totalPages) {
+      this.fetchMovies(this.currentPage + 1);
     }
   }
 
   prevPage() {
     if (this.currentPage > 1) {
-      this.currentPage--;
+      this.fetchMovies(this.currentPage - 1);
     }
   }
 
   signOut() {
-    localStorage.clear(); // ✅ Clear all stored data
-    this.router.navigate(['/signin']); // ✅ Redirect to sign-in page
+    localStorage.clear();
+    this.router.navigate(['/signin']);
   }
 
- 
+  submitRating(movieId: number, rating: number) {
+    if (!rating) {
+      alert("Please select a rating before submitting.");
+      return;
+    }
+
+    const url = `http://localhost:8080/api/rating/add?movieId=${movieId}&rating=${rating}`;
+    this.http.post(url, {}, { headers: this.getHeaders() }).subscribe(
+        () => alert("Rating submitted successfully!"),
+        (error) => console.error("Error submitting rating:", error)
+    );
+  }
 }

@@ -1,22 +1,16 @@
-import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-movie-details',
-  standalone: true,
-  imports: [CommonModule, MatDialogModule, MatButtonModule], 
   templateUrl: './movie-details.component.html',
-  styleUrl: './movie-details.component.css'
+  standalone: true,
+  styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent {
-  constructor(
-    public dialogRef: MatDialogRef<MovieDetailsComponent>,
-    @Inject(MAT_DIALOG_DATA) public movie: any
-  ) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<MovieDetailsComponent>) {}
 
-  close() {
+  closeDialog() {
     this.dialogRef.close();
   }
 }

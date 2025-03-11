@@ -4,66 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dac808a0-e8b1-4761-88d0-1173c5a0d72b" name="Changes" comment="renamed a dto">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/src/app/film-search/film-search.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/film-search/film-search.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/src/app/film-search/film-search.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/film-search/film-search.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/src/app/film.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/film.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/src/app/movie.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/movie.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/src/app/signin/signin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FE/src/app/signin/signin.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/MovieAppApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/client/OmdbClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/config/OpenApiConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/controller/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/controller/MovieController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/controller/OmdbMovieController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/controller/RatingController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/dto/BaseResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/dto/JwtResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/dto/LoginRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/dto/MessageResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/dto/MovieDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/dto/MovieShortInfoDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/dto/OmdbMovieDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/dto/OmdbSearchDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/dto/SignupRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/entity/Movie.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/entity/Rating.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/entity/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/entity/UserRole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/exception/handling/BaseException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/exception/handling/GlobalExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/exception/handling/enums/ErrorMessages.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/mapper/MovieMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/repository/MovieRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/repository/RatingRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/repository/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/repository/UserRoleRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/security/AuthEntryPointJwt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/security/AuthTokenFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/security/JwtUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/security/UserDetailsImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/security/UserDetailsServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/security/WebSecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/service/IMovieService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/service/IOmdbMovieService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/service/IRatingService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/service/impl/MovieServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/service/impl/OmdbMovieService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/movieapp/service/impl/RatingServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1__Create_Tables.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V2__Insert_Into_User_Roles.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V3__Insert_Into_Users.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/movieapp/MovieAppApplicationTests.java" beforeDir="false" />
-    </list>
+    <list default="true" id="dac808a0-e8b1-4761-88d0-1173c5a0d72b" name="Changes" comment="renamed a dto" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,12 +28,12 @@
     &quot;assignee&quot;: &quot;SohailaBarakat&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/SohailaBarakat/Movie-App&quot;,
-    &quot;accountId&quot;: &quot;0cf2d50c-edc6-4b53-9e9e-3fc0b7ad489d&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/SohailaBarakat/Movie-App.git",
+    "accountId": "0cf2d50c-edc6-4b53-9e9e-3fc0b7ad489d"
   }
-}</component>
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -108,22 +49,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.MovieAppApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.movie-app [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.movie-app [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.movie-app [package].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/pc/Desktop/movie-app&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MovieAppApplication.executor": "Run",
+    "Maven.movie-app [clean].executor": "Run",
+    "Maven.movie-app [install].executor": "Run",
+    "Maven.movie-app [package].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/pc/Desktop/untitled folder 2/Movie-App",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/movieapp" />

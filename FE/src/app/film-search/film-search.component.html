@@ -1,22 +1,43 @@
-<div class="search-container">
-    <input #searchBox type="text" placeholder="Enter movie title..." class="search-box" />
-    <button (click)="search(searchBox.value)" class="search-btn">🔍 Search</button>
-  </div>
-  <button (click)="signOut()" class="signout-btn">🚪 Sign Out</button>
-  
-  <div *ngIf="movies.length > 0" class="results-container">
-    <h2>🎬 Search Results:</h2>
-    <div class="movies-grid">
-      <div *ngFor="let movie of paginatedFilms" class="movie-card" (click)="openFilmDetails(movie)">
-        <h3 style="color: white;">{{ movie.title }} ({{ movie.year }})</h3>
-        <img [src]="movie.poster" alt="{{ movie.title }}" class="movie-poster" />
-      </div>
+<div class="container">
+    <!-- Sign Out Button (Moved to Top Right) -->
+    <div class="logout-container">
+        <button class="sign-out" (click)="signOut()">Sign Out</button>
     </div>
-  
-    <div class="pagination">
-      <button (click)="prevPage()" [disabled]="currentPage === 1">⬅️ Previous</button>
-      <span>Page {{ currentPage }} / {{ Math.ceil(movies.length / moviesPerPage) }}</span>
-      <button (click)="nextPage()" [disabled]="(currentPage * moviesPerPage) >= movies.length">Next ➡️</button>
+
+    <h2>Movie Dashboard</h2>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" placeholder="Search by title..." [(ngModel)]="searchTitle">
+        <input type="text" placeholder="Search by year..." [(ngModel)]="searchYear">
+        <input type="text" placeholder="Search by director..." [(ngModel)]="searchDirector">
+        <button (click)="searchMovies()">Search</button>
     </div>
-  </div>
-  
+
+    <!-- Movie List -->
+    <div class="movie-list">
+        <div *ngFor="let movie of movies" class="movie-card">
+            <!-- Use the correct property names -->
+            <img [src]="movie.poster" alt="Movie Poster" (click)="openFilmDetails(movie)" class="clickable-image">
+            <h3>{{ movie.title }}</h3>
+            <p><strong>Year:</strong> {{ movie.year }}</p>
+            <p><strong>Director:</strong> {{ movie.director }}</p>
+
+            <!-- Rating -->
+            <div class="rating">
+                <label for="rating-{{ movie.id }}">Rate this movie: </label>
+                <select id="rating-{{ movie.id }}" [(ngModel)]="movie.userRating">
+                    <option *ngFor="let r of [1,2,3,4,5]" [value]="r">{{ r }}</option>
+                </select>
+                <button (click)="submitRating(movie.id, movie.userRating)">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination (only when not searching) -->
+    <div class="pagination" *ngIf="!isSearching">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage >= totalPages">Next</button>
+    </div>
+</div>
